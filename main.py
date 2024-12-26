@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from circleshape import CircleShape
 
 print("Starting asteroids!")
 print(f"Screen width: {SCREEN_WIDTH}")
@@ -37,6 +38,11 @@ def main():
                 return
 
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            if player.collisions(asteroid):
+                print("Game over!")
+                return
 
         screen.fill("black")
         
